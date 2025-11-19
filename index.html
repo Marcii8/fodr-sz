@@ -1,145 +1,208 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projekt – IdőMester</title>
-  <meta name="color-scheme" content="light dark">
-  <style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IdőMester – Projekt dokumentumok</title>
+<meta name="color-scheme" content="light dark">
+
+<style>
+  /* ====== THEME ====== */
+  :root{
+    --bg: #faf7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --primary: #e11d48;
+    --primary-weak: #fde2e7;
+    --accent: #f59e0b;
+    --border: #e7e2ea;
+    --radius-xl: 18px;
+    --radius: 14px;
+    --shadow: 0 18px 45px rgba(17,24,39,.08);
+    --shadow-soft: 0 12px 22px rgba(17,24,39,.04);
+  }
+  @media (prefers-color-scheme: dark){
     :root{
-      --bg: #faf7fb;
-      --card: #ffffff;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --primary: #e11d48;
-      --primary-weak: #fde2e7;
-      --accent: #f59e0b;
-      --border: #e7e2ea;
-      --radius-xl: 18px;
-      --radius: 14px;
-      --shadow: 0 18px 45px rgba(17,24,39,.08);
-      --shadow-soft: 0 12px 22px rgba(17,24,39,.04);
+      --bg: #0b0f14;
+      --card: #0e131b;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #fb7185;
+      --primary-weak: #331621;
+      --accent: #fbbf24;
+      --border: #1f2937;
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+      --shadow-soft: 0 12px 22px rgba(0,0,0,.35);
     }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0b0f14;
-        --card: #0e131b;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --primary: #fb7185;
-        --primary-weak: #331621;
-        --accent: #fbbf24;
-        --border: #1f2937;
-        --shadow: 0 18px 45px rgba(0,0,0,.45);
-        --shadow-soft: 0 12px 22px rgba(0,0,0,.35);
-      }
-    }
+  }
 
-    body{
-      margin:0; padding:2.8rem 1.2rem 3.6rem;
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.8), transparent 60%),
-                  radial-gradient(900px 700px at 120% 0%, color-mix(in srgb, var(--primary-weak) 45%, transparent), transparent 70%),
-                  var(--bg);
-      color: var(--text);
-      font: 16px/1.7 "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
-    }
+  body{
+    margin:0;
+    padding:2.2rem 1.3rem 3rem;
+    background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.8), transparent 55%),
+                radial-gradient(900px 700px at 120% 0%, color-mix(in srgb, var(--primary-weak) 50%, transparent), transparent 70%),
+                var(--bg);
+    color:var(--text);
+    font:16px/1.7 "Inter", ui-sans-serif, system-ui;
+  }
 
-    .container{max-width: 1000px; margin:0 auto;}
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-    header.hero{
-      display:flex; gap:1.25rem; align-items:center;
-      padding:1.6rem; border:1px solid var(--border);
-      border-radius: var(--radius-xl); background: var(--card);
-      box-shadow: var(--shadow); margin-bottom:1.8rem;
-    }
+  /* HEADER */
+  header.hero{
+    display:flex;
+    gap:1.25rem;
+    align-items:center;
+    padding:1.6rem;
+    border:1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background: var(--card);
+    box-shadow: var(--shadow);
+    margin-bottom:1.8rem;
+  }
 
-    .emblem{
-      width:80px; height:80px; border-radius:22px; isolation:isolate;
-      background:
-        radial-gradient(30px 18px at 65% 25%, rgba(255,255,255,.45) 5%, transparent 60%),
-        conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
-      display:grid; place-items:center; color:#fff; font-weight:800; font-size:1.4rem;
-      box-shadow: 0 18px 28px rgba(225,29,72,.28);
-    }
+  .emblem{
+    width:78px;
+    height:78px;
+    border-radius:22px;
+    background:
+      radial-gradient(30px 20px at 65% 25%, rgba(255,255,255,.4), transparent 60%),
+      conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
+    display:grid;
+    place-items:center;
+    font-size:1.4rem;
+    font-weight:800;
+    color:white;
+    position:relative;
+  }
 
-    h1{font-size:2rem; margin:0 0 .2rem;}
-    .subtitle{color:var(--muted); font-size:1.1rem;}
+  .emblem::after{
+    content:"✂";
+    font-size:1.9rem;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,.2));
+  }
 
-    /* Card styling */
-    .card{
-      padding:1.4rem 1.4rem;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--card);
-      box-shadow: var(--shadow-soft);
-      margin:1rem 0 1.2rem;
-    }
+  h1{
+    font-size:2rem;
+    margin:0 0 .3rem;
+  }
 
-    .card h2{
-      font-size:1.3rem; margin:0 0 1rem;
-      display:flex; align-items:center; gap:.55rem;
-    }
+  .subtitle{
+    color:var(--muted);
+    margin-top:4px;
+  }
 
-    .card h2::before{
-      content:""; width:10px; height:22px; border-radius:6px;
-      background: linear-gradient(180deg, var(--primary), color-mix(in srgb, var(--primary) 45%, var(--accent)));
-    }
+  /* CARDS */
+  .card{
+    padding:1.4rem;
+    background:var(--card);
+    border-radius: var(--radius);
+    border:1px solid var(--border);
+    margin-bottom:1.5rem;
+    box-shadow: var(--shadow-soft);
+  }
 
-    a.btn{
-      display:inline-block;
-      padding:0.6rem 1rem;
-      background: var(--primary);
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:600;
-      box-shadow: var(--shadow-soft);
-    }
+  .card h2{
+    font-size:1.4rem;
+    margin-bottom:.9rem;
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+  }
 
-    a.btn:hover{
-      filter:brightness(1.15);
-      transform:translateY(-2px);
-    }
+  .card h2::before{
+    content:"";
+    width:10px; height:22px;
+    border-radius:6px;
+    background:linear-gradient(180deg, var(--primary), var(--accent));
+  }
 
-  </style>
+  .link-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+
+  .link-list li{
+    margin:.45rem 0;
+  }
+
+  .link-list a{
+    display:inline-block;
+    padding:.55rem .9rem;
+    background:var(--primary-weak);
+    border-radius:10px;
+    border:1px solid var(--border);
+    color:var(--text);
+    text-decoration:none;
+    transition:.2s;
+  }
+
+  .link-list a:hover{
+    transform:translateY(-2px);
+    background:var(--primary);
+    color:white;
+  }
+
+</style>
 </head>
+
 <body>
-  <div class="container">
+<div class="container">
 
-    <header class="hero">
-      <div class="emblem">✂</div>
-      <div>
-        <h1>IdőMester — Fodrász Projekt</h1>
-        <p class="subtitle">H1–H2–H3 dokumentációs csomag</p>
-      </div>
-    </header>
-
-    <section class="card">
-      <h2>H1 – Projektterv</h2>
-      <p>Átfogó projektterv, mérföldkövek, erőforrások és ütemezés a rendszer fejlesztéséhez.</p>
-      <a class="btn" href="H1 fodrász.html">Megnyitás</a>
-    </section>
-
-    <section class="card">
-      <h2>H2 – Követelmény-analízis</h2>
-      <p>Vízió dokumentum, projekt áttekintés és követelmények részletes leírása.</p>
-      <a class="btn" href="H2 fodrász.html">Megnyitás</a>
-    </section>
-
-    <section class="card">
-      <h2>H3 – Specifikációs fázis</h2>
-      <p>A harmadik fázis négy dokumentumból áll:</p>
-
-      <a class="btn" href="H3át.html">Áttekintés</a>
-      <br><br>
-      <a class="btn" href="H3SRS.html">SRS specifikáció</a>
-      <br><br>
-      <a class="btn" href="H3szótár.html">Szótár</a>
-      <br><br>
-      <a class="btn" href="H3fel.html">Felhasználói dokumentáció</a>
-    </section>
-
+<header class="hero">
+  <div class="emblem"></div>
+  <div>
+    <h1>IdőMester – Projekt dokumentumok</h1>
+    <p class="subtitle">Szoftvertechnológia beadandó – H1–H4</p>
   </div>
+</header>
+
+<!-- H1 -->
+<div class="card">
+  <h2>H1 – Projektterv</h2>
+  <ul class="link-list">
+    <li><a href="H1 fodrász.html">H1 – Projektterv</a></li>
+  </ul>
+</div>
+
+<!-- H2 -->
+<div class="card">
+  <h2>H2 – Követelmény-analízis</h2>
+  <ul class="link-list">
+    <li><a href="H2 fodrász.html">H2 – Követelmény-analízis</a></li>
+  </ul>
+</div>
+
+<!-- H3 -->
+<div class="card">
+  <h2>H3 – Specifikációs fázis</h2>
+  <ul class="link-list">
+    <li><a href="H3át.html">H3 – Áttekintés</a></li>
+    <li><a href="H3SRS.html">H3 – SRS dokumentum</a></li>
+    <li><a href="H3szótár.html">H3 – Szótár</a></li>
+    <li><a href="H3fel.html">H3 – Felhasználói dokumentáció</a></li>
+  </ul>
+</div>
+
+<!-- H4 -->
+<div class="card">
+  <h2>H4 – Dokumentációs fázis</h2>
+  <ul class="link-list">
+    <li><a href="H4_Analizis.html">H4 – Analízis modell</a></li>
+    <li><a href="H4_Rendszerterv.html">H4 – Rendszerterv</a></li>
+    <li><a href="H4_UI.html">H4 – Felhasználói felület terve</a></li>
+    <li><a href="H4_Adatbazis.html">H4 – Adatbázis-terv</a></li>
+    <li><a href="H4_Szotar.html">H4 – Szótár</a></li>
+    <li><a href="H4_Felhasznaloi.html">H4 – Felhasználói dokumentáció</a></li>
+    <li><a href="H4_Munkanaplo.html">H4 – Munkanapló</a></li>
+  </ul>
+</div>
+
+</div>
 </body>
 </html>
-
