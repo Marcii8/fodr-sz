@@ -97,6 +97,7 @@
     h3{margin:.6rem 0 .35rem;font-size:1.05rem;}
     ul{margin:.2rem 0 .8rem;padding-left:1.1rem;}
     li{margin-bottom:.2rem;}
+
     table{
       width:100%;border-collapse:collapse;margin:.5rem 0 1rem;
       border-radius:12px;overflow:hidden;
@@ -107,6 +108,7 @@
     thead th{background:#020617;color:#e5e7eb;text-transform:uppercase;font-size:.78rem;letter-spacing:.06em;}
     tbody tr:nth-child(odd){background:#020617;}
     tbody tr:nth-child(even){background:#030712;}
+
     .note{
       margin-top:.6rem;
       padding:.8rem 1rem;
@@ -114,6 +116,13 @@
       background:rgba(15,23,42,.9);
       border:1px dashed rgba(148,163,184,.9);
       font-size:.92rem;
+    }
+
+    img.diagram{
+      max-width:100%;
+      display:block;
+      border-radius:12px;
+      margin-top:.8rem;
     }
   </style>
 </head>
@@ -129,7 +138,7 @@
     <div class="emblem">H4</div>
     <div>
       <h1>Analízis modell – IdőMester</h1>
-      <p class="subtitle">Objektumorientált analízis modell a fodrász szalon időpontfoglaló rendszerhez.</p>
+      <p class="subtitle">Objektumorientált analízis a fodrász szalon időpontfoglaló rendszerhez.</p>
       <p class="meta">
         <b>Projekt:</b> IdőMester ·
         <b>Tantárgy:</b> Szoftvertechnológia ·
@@ -140,10 +149,10 @@
 
   <section class="card">
     <h2>1. Cél és hatókör</h2>
-    <p>Az analízis modell célja, hogy a valós fodrász szalon működését objektumorientált
-       fogalmakkal írja le, technológiafüggetlen módon. A modell a fő fogalmakat
-       (vendég, stylist, szolgáltatás, időablak, foglalás) és azok kapcsolatait
-       rögzíti, hogy stabil alapot adjon a későbbi rendszertervnek és implementációnak.</p>
+    <p>Az analízis modell célja, hogy a fodrász szalon működését technológiafüggetlen,
+       objektumorientált formában írja le. A modell a fő fogalmakat (Vendég, Stylist,
+       Szolgáltatás, Időablak, Foglalás) és azok kapcsolatait rögzíti, hogy stabil
+       alapot adjon a rendszertervhez és az implementációhoz.</p>
   </section>
 
   <section class="card">
@@ -152,11 +161,11 @@
     <h3>2.1 Szereplők</h3>
     <ul>
       <li><strong>Vendég:</strong> időpontot foglal, módosít vagy lemond.</li>
-      <li><strong>Stylist:</strong> szolgáltatást nyújt, beosztással rendelkezik.</li>
-      <li><strong>Admin:</strong> a szalon működtetéséért felelős; kezeli a szolgáltatás-listát, nyitvatartást.</li>
+      <li><strong>Stylist:</strong> szolgáltatást nyújt, időbeosztással rendelkezik.</li>
+      <li><strong>Admin:</strong> a szalon működéséért felel; kezeli a szolgáltatás-listát, nyitvatartást és stylistokat.</li>
     </ul>
 
-    <h3>2.2 Fő entitások</h3>
+    <h3>2.2 Entitások (fogalmi szinten)</h3>
     <table>
       <thead>
         <tr><th>Entitás</th><th>Leírás</th><th>Példa attribútumok</th></tr>
@@ -191,25 +200,36 @@
     </table>
 
     <div class="note">
-      <strong>Megjegyzés:</strong> ebben a fázisban az analízis modell nem foglalkozik technikai részletekkel
-      (adatbázis, API), csak a fogalmi szinttel.
+      <strong>Megjegyzés:</strong> Ebben a fázisban az analízis modell nem foglalkozik
+      adatbázissal vagy API-kkal, csak a fogalmi szinttel.
     </div>
   </section>
 
   <section class="card">
-    <h2>3. Kapcsolatok és üzleti szabályok</h2>
+    <h2>3. Analízis modell diagram</h2>
+    <p>Az IdőMester rendszer fogalmi analízis modellje a fő entitásokat és
+       kapcsolataikat mutatja be (Vendég, Stylist, Szolgáltatás, Időablak, Foglalás):</p>
 
-    <h3>3.1 Kapcsolatok</h3>
+    <!-- ANALÍZIS MODELL KÉP -->
+    <img src="h4_analizis_modell.png"
+         alt="IdőMester analízis modell – fogalmi diagram"
+         class="diagram">
+  </section>
+
+  <section class="card">
+    <h2>4. Kapcsolatok és üzleti szabályok</h2>
+
+    <h3>4.1 Kapcsolatok</h3>
     <ul>
-      <li><strong>Vendég – Foglalás:</strong> egy vendég több foglalással rendelkezhet.</li>
-      <li><strong>Stylist – Foglalás:</strong> egy stylistnek több foglalása lehet egy nap, de az időablakok nem fedhetik egymást.</li>
+      <li><strong>Vendég – Foglalás:</strong> egy vendégnek több foglalása is lehet.</li>
+      <li><strong>Stylist – Foglalás:</strong> egy stylistnek több foglalása lehet egy napon, de az időablakok nem fedhetik egymást.</li>
       <li><strong>Szolgáltatás – Foglalás:</strong> egy foglaláshoz pontosan egy szolgáltatás tartozik.</li>
-      <li><strong>Stylist – Időablak:</strong> egy időablak egy adott stylisthez tartozik.</li>
+      <li><strong>Stylist – Időablak:</strong> egy időablak mindig egy stylisthez kötődik.</li>
     </ul>
 
-    <h3>3.2 Fő üzleti szabályok</h3>
+    <h3>4.2 Fő üzleti szabályok</h3>
     <ul>
-      <li>Foglalás csak nyitvatartási időn belül hozható létre.</li>
+      <li>Foglalás csak a szalon nyitvatartási idején belül hozható létre.</li>
       <li>Ugyanarra az időtartományra egy stylistnek csak egy aktív foglalása lehet.</li>
       <li>A szolgáltatás időtartama bele kell, hogy férjen a választott időablakba.</li>
       <li>Foglalás lemondása csak az időpont előtt egy konfigurálható határidőig lehetséges.</li>
@@ -217,34 +237,47 @@
   </section>
 
   <section class="card">
-    <h2>4. Tipikus használati esetek (Use Case áttekintés)</h2>
-    <h3>4.1 Vendég időpontot foglal</h3>
+    <h2>5. Kezdeti osztálydiagram</h2>
+    <p>Az alábbi UML osztálydiagram a fő osztályokat (Vendég, Stylist, Szolgáltatás,
+       Időablak, Foglalás) és azok kezdeti attribútumait, valamint kapcsolatait mutatja:</p>
+
+    <!-- OSZTÁLYDIAGRAM KÉP -->
+    <img src="h4_osztalydiagram.png"
+         alt="IdőMester – Kezdeti UML osztálydiagram"
+         class="diagram">
+  </section>
+
+  <section class="card">
+    <h2>6. Tipikus használati esetek</h2>
+
+    <h3>6.1 Vendég időpontot foglal</h3>
     <ul>
       <li>Vendég kiválasztja a szolgáltatást.</li>
       <li>Rendszer megjeleníti a választható stylistokat és szabad időablakokat.</li>
       <li>Vendég kiválasztja az időpontot, megadja az elérhetőségeit.</li>
-      <li>Rendszer ütközést ellenőriz, majd létrehozza a foglalást.</li>
+      <li>Rendszer ellenőrzi az ütközéseket, majd létrehozza a foglalást.</li>
     </ul>
 
-    <h3>4.2 Admin módosítja a szolgáltatás-listát</h3>
+    <h3>6.2 Stylist megtekinti a napi beosztását</h3>
     <ul>
-      <li>Admin új szolgáltatást vesz fel (időtartam + ár megadása).</li>
-      <li>Régi szolgáltatást inaktiválhat, ha már nem elérhető.</li>
+      <li>Stylist megnyitja a naptár nézetet.</li>
+      <li>A rendszer listázza a napra eső foglalásokat időrendben.</li>
     </ul>
 
-    <h3>4.3 Stylist megtekinti a napi beosztását</h3>
+    <h3>6.3 Admin módosítja a szolgáltatás-listát</h3>
     <ul>
-      <li>Stylist bejelentkezik az admin felületre.</li>
-      <li>Napi nézetben látja a soron következő vendégeket és szolgáltatásokat.</li>
+      <li>Admin új szolgáltatást vesz fel vagy meglévőt szerkeszt/inaktivál.</li>
+      <li>A módosítások azonnal hatnak az új foglalásokra.</li>
     </ul>
   </section>
 
   <section class="card">
-    <h2>5. Összegzés</h2>
-    <p>Az analízis modell a fodrász szalon működésének technológiafüggetlen leírása.
-       A dokumentumban bemutatott entitások, kapcsolatok és szabályok változtatás nélkül
-       felhasználhatók a H4 rendszertervben és az adatbázis-tervben. A modell stabil
-       alapot biztosít az IdőMester rendszer további tervezési lépéseihez.</p>
+    <h2>7. Összegzés</h2>
+    <p>Az analízis modell rögzíti az IdőMester rendszer legfontosabb fogalmait
+       és szabályait. A fogalmi és osztálydiagramok alapján a következő lépésben
+       elkészíthető a részletes rendszerterv, az adatbázis-terv és az implementációs
+       terv, miközben a doménszabályok változtatás nélkül átvihetők a további
+       tervezési fázisokba.</p>
   </section>
 
 </div>
