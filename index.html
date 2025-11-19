@@ -1,140 +1,167 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IdőMester – Projekt Dokumentumok</title>
 
   <style>
     :root {
-      --bg: #f5f1f7;
-      --card: #ffffff;
-      --text: #1e1e1e;
-      --muted: #6b7280;
-      --primary: #e11d48;
-      --border: #ddd;
-      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --bg: linear-gradient(135deg, #0a0a0a, #111, #000);
+      --card: rgba(20, 20, 20, 0.8);
+      --text: #f5f5f5;
+      --muted: #a1a1a1;
+      --primary: #ff005d;
+      --secondary: #00b7ff;
+      --accent: #9d00ff;
       --radius: 18px;
+      --shadow: 0 15px 40px rgba(0,0,0,0.55);
+      --shadow-hover: 0 25px 65px rgba(0,0,0,0.7);
     }
 
     body {
       margin: 0;
-      padding: 40px 20px;
+      padding: 50px 20px;
       background: var(--bg);
-      font-family: "Inter", Arial, sans-serif;
+      background-attachment: fixed;
+      font-family: "Inter", sans-serif;
       color: var(--text);
     }
 
     h1 {
       text-align: center;
-      font-size: 2.2rem;
+      font-size: 2.7rem;
+      font-weight: 800;
+      letter-spacing: -1px;
       margin-bottom: 10px;
     }
 
-    p.subtitle {
+    .subtitle {
       text-align: center;
       color: var(--muted);
-      margin-bottom: 35px;
-      font-size: 1.05rem;
+      font-size: 1.2rem;
+      margin-bottom: 50px;
     }
 
     .container {
-      max-width: 1050px;
+      max-width: 1150px;
       margin: 0 auto;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
     }
 
-    .card {
+    .card, .card-group {
       background: var(--card);
+      padding: 28px;
       border-radius: var(--radius);
-      padding: 22px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
-      transition: transform .15s ease, box-shadow .15s ease;
+      backdrop-filter: blur(12px);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    .card::before, .card-group::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--primary), var(--accent), var(--secondary));
+      filter: blur(45px);
+      opacity: 0.18;
+      transition: 0.35s ease;
     }
 
-    .card h3 {
+    .card:hover, .card-group:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card:hover::before, .card-group:hover::before {
+      opacity: 0.35;
+      filter: blur(25px);
+    }
+
+    h2 {
       margin-top: 0;
+      color: #fff;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 1.3rem;
       margin-bottom: 10px;
-      font-size: 1.25rem;
     }
 
-    .card p {
-      margin-top: 0;
+    .card p, .card-group p {
+      margin: 0 0 20px;
       color: var(--muted);
-      margin-bottom: 18px;
+      font-size: 1rem;
     }
 
     .btn {
       display: inline-block;
       padding: 10px 16px;
-      border-radius: 10px;
-      background: var(--primary);
-      color: white;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       text-decoration: none;
+      color: white;
       font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      margin-bottom: 12px;
     }
 
     .btn:hover {
-      background: #be123c;
+      filter: brightness(1.2);
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
 
     <h1>IdőMester – Projekt Dokumentumok</h1>
-    <p class="subtitle">H1 – H2 – H3 dokumentumok rendezett formában</p>
+    <p>SzoftverTechnológia 2025 </p>
 
+    <!-- H1 + H2 kártyák -->
     <div class="grid">
 
       <div class="card">
         <h3>H1 – Projektterv</h3>
-        <p>Projekt felépítése, tervezés, mérföldkövek és csapatmunka.</p>
+        <p>A projekt felépítése, tervezés és célok.</p>
         <a class="btn" href="H1 fodrász.html">Megnyitás</a>
       </div>
 
       <div class="card">
         <h3>H2 – Követelmény-analízis</h3>
-        <p>Vízió, specifikáció, kockázatok és funkcionális igények.</p>
+        <p>Követelmények, vízió dokumentum és elemzés.</p>
         <a class="btn" href="H2 fodrász.html">Megnyitás</a>
       </div>
 
-      <div class="card">
-        <h3>H3 – Áttekintés</h3>
-        <p>A specifikációs fázis összefoglaló nézete.</p>
-        <a class="btn" href="H3át.html">Megnyitás</a>
-      </div>
+    </div>
 
-      <div class="card">
-        <h3>H3 – SRS Dokumentum</h3>
-        <p>Rendszerkövetelmények részletes meghatározása.</p>
-        <a class="btn" href="H3SRS.html">Megnyitás</a>
-      </div>
+    <!-- H3 egy blokkban, egymás alatt -->
+    <div class="card-group">
+      <h2>H3 – Specifikációs fázis</h2>
+      <p>Áttekíntés, SRS specifikációk, Szótár, Felhasználói dok.</p>
 
-      <div class="card">
-        <h3>H3 – Szótár</h3>
-        <p>Fogalmak és definíciók gyűjteménye.</p>
-        <a class="btn" href="H3szótár.html">Megnyitás</a>
-      </div>
-
-      <div class="card">
-        <h3>H3 – Felhasználói dokumentáció</h3>
-        <p>Rendszer használati útmutató és kezelési útvonalak.</p>
-        <a class="btn" href="H3fel.html">Megnyitás</a>
-      </div>
-
+      <a class="btn" href="H3át.html">H3 – Áttekintés</a><br>
+      <a class="btn" href="H3SRS.html">H3 – SRS specifikáció</a><br>
+      <a class="btn" href="H3szótár.html">H3 – Szótár</a><br>
+      <a class="btn" href="H3fel.html">H3 – Felhasználói dokumentáció</a>
     </div>
 
   </div>
