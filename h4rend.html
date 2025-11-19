@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>H4 – Rendszerterv | IdőMester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --bg: radial-gradient(circle at top, #050816 0, #02010a 45%, #000 100%);
+      --card: #0b1020;
+      --card-soft: #070a14;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #fb7185;
+      --accent: #38bdf8;
+      --border: #1f2937;
+      --shadow: 0 22px 45px rgba(0,0,0,.85);
+      --radius-xl: 20px;
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      padding:2.4rem 1.2rem 3rem;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.7 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+
+    .container{max-width:1024px;margin:0 auto;}
+
+    /* top bar */
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.6rem 1rem;
+      margin:-1.4rem -1.2rem 1.8rem;
+      background:rgba(3,7,18,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-title{font-weight:600;font-size:.95rem;color:var(--muted);}
+    .topbar-title span{color:var(--primary);}
+    .back-link{
+      display:inline-block;
+      padding:.45rem .9rem;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+    .back-link:hover{filter:brightness(1.1);}
+
+    /* hero */
+    .hero{
+      display:flex;gap:1.25rem;align-items:center;
+      padding:1.6rem;
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0 0,rgba(248,113,113,.18),transparent 60%),
+                 radial-gradient(circle at 100% 0,rgba(56,189,248,.18),transparent 60%),
+                 var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:1.4rem;
+    }
+    .emblem{
+      width:70px;height:70px;border-radius:22px;
+      background:conic-gradient(from 220deg,#fb7185,#a855f7,#38bdf8,#fb7185);
+      display:grid;place-items:center;
+      color:#fff;font-weight:800;font-size:1.3rem;
+    }
+    h1{margin:.1rem 0 .2rem;font-size:1.9rem;}
+    .subtitle{color:var(--muted);margin:0;}
+    .meta{margin-top:.9rem;font-size:.9rem;color:var(--muted);}
+    .meta b{color:#e5e7eb;font-weight:600;}
+
+    section.card{
+      margin:1rem 0 1.3rem;
+      padding:1.3rem 1.4rem;
+      border-radius:var(--radius);
+      background:var(--card-soft);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    section.card h2{
+      margin:.1rem 0 .9rem;
+      font-size:1.25rem;
+      display:flex;align-items:center;gap:.55rem;
+    }
+    section.card h2::before{
+      content:"";width:10px;height:22px;border-radius:999px;
+      background:linear-gradient(180deg,var(--primary),var(--accent));
+    }
+    h3{margin:.6rem 0 .35rem;font-size:1.05rem;}
+    ul{margin:.2rem 0 .8rem;padding-left:1.1rem;}
+    li{margin-bottom:.2rem;}
+
+    code{
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:.9rem;
+      background:#020617;
+      padding:0 .3rem;
+      border-radius:4px;
+    }
+
+    img.diagram{
+      max-width:100%;
+      border-radius:14px;
+      display:block;
+      margin-top:1rem;
+      box-shadow:0 20px 40px rgba(0,0,0,.7);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="topbar">
+    <div class="topbar-title"><span>H4</span> – Rendszerterv</div>
+    <a class="back-link" href="index.html">← Vissza az indexre</a>
+  </nav>
+
+  <header class="hero">
+    <div class="emblem">RT</div>
+    <div>
+      <h1>Rendszerterv – IdőMester</h1>
+      <p class="subtitle">Architektúra és komponensek a fodrász szalon időpontfoglaló rendszeréhez.</p>
+      <p class="meta">
+        <b>Projekt:</b> IdőMester ·
+        <b>Technológia:</b> Python alapú webes rendszer ·
+        <b>Készítette:</b> Kóró Marcell József
+      </p>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>1. Cél</h2>
+    <p>A rendszerterv célja, hogy a H3–H4 analízis modell alapján technikai
+       szinten meghatározza az IdőMester rendszer felépítését: architektúrát,
+       fő komponenseket, rétegezést, valamint a külső interfészeket (REST API).</p>
+  </section>
+
+  <section class="card">
+    <h2>2. Architektúra áttekintés</h2>
+    <p>A rendszer egy egyszerű kliens–szerver architektúrát követ:</p>
+    <ul>
+      <li><strong>Frontend:</strong> HTML/CSS/JavaScript alapú webes felület, GitHub Pages-ről vagy web szerverről kiszolgálva.</li>
+      <li><strong>Backend API:</strong> Python (FastAPI vagy Flask) REST végpontokkal.</li>
+      <li><strong>Adatbázis:</strong> fejlesztéskor SQLite, későbbi fázisban PostgreSQL-re váltható.</li>
+    </ul>
+
+    <h3>2.1 Architektúra diagram</h3>
+    <p>Az alábbi diagram a kliens–szerver felépítést és a fontosabb komponenseket mutatja be:</p>
+
+    <!-- ARCHITEKTÚRA KÉP -->
+    <img src="h4_architektura.png"
+         alt="IdőMester rendszer architektúra diagram"
+         class="diagram">
+  </section>
+
+  <section class="card">
+    <h2>3. Fő komponensek</h2>
+
+    <h3>3.1 Foglaláskezelő szolgáltatás</h3>
+    <ul>
+      <li>Új foglalás létrehozása (vendég + stylist + szolgáltatás + időintervallum).</li>
+      <li>Foglalás lemondása / módosítása szabályok szerint.</li>
+      <li>Ütközéskezelés (stylisten belüli átfedő foglalások tiltása).</li>
+    </ul>
+
+    <h3>3.2 Szolgáltatás- és stylist-kezelés</h3>
+    <ul>
+      <li>Szolgáltatáskatalógus (név, időtartam, ár).</li>
+      <li>Stylistok kezelése (név, specializáció, elérhetőség).</li>
+      <li>Nyitvatartás és speciális idősávok (szabadság, zárva napok).</li>
+    </ul>
+
+    <h3>3.3 Naptár- és nézetkezelő</h3>
+    <ul>
+      <li>Admin és stylist napi / heti naptár nézet.</li>
+      <li>Lekérdezések dátum, stylist és státusz szerint.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>4. Rétegezés</h2>
+    <ul>
+      <li><strong>Prezentációs réteg:</strong> HTML oldalak, melyek az API-t hívják (fetch / Axios segítségével).</li>
+      <li><strong>Alkalmazás logika réteg:</strong> Python service réteg, amely a domain szabályokat valósítja meg (foglalási logika, ütközéskezelés).</li>
+      <li><strong>Adatelérési réteg:</strong> repository / ORM réteg (pl. SQLAlchemy), amely az adatbázis műveleteket kezeli.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>5. Fő REST végpontok</h2>
+
+    <h3>5.1 Szolgáltatások</h3>
+    <ul>
+      <li><code>GET /services</code> – elérhető szolgáltatások listája.</li>
+      <li><code>POST /services</code> – új szolgáltatás létrehozása (admin).</li>
+      <li><code>PUT /services/{id}</code> – meglévő szolgáltatás módosítása.</li>
+    </ul>
+
+    <h3>5.2 Stylistok</h3>
+    <ul>
+      <li><code>GET /stylists</code> – stylistok listázása.</li>
+      <li><code>GET /stylists/{id}/schedule</code> – adott stylist napi/heti beosztása.</li>
+    </ul>
+
+    <h3>5.3 Foglalások</h3>
+    <ul>
+      <li><code>GET /appointments?day=YYYY-MM-DD</code> – foglalások lekérdezése adott napra.</li>
+      <li><code>POST /appointments</code> – új foglalás létrehozása.</li>
+      <li><code>DELETE /appointments/{id}</code> – foglalás lemondása.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>6. Nem funkcionális követelmények megvalósítása</h2>
+
+    <h3>6.1 Teljesítmény</h3>
+    <ul>
+      <li>Egyszerű cache-elés a napi naptár lekérdezésére.</li>
+      <li>Indexek az adatbázisban a dátum és stylist mezőkön.</li>
+    </ul>
+
+    <h3>6.2 Biztonság</h3>
+    <ul>
+      <li>Jelszavak sózott-hash-elt tárolása.</li>
+      <li>Bemenet validálás minden végpontnál.</li>
+      <li>Jogosultság-kezelés (admin vs. nyilvános végpontok).</li>
+    </ul>
+
+    <h3>6.3 Karbantarthatóság</h3>
+    <ul>
+      <li>Rétegzett architektúra, tiszta függőségi irányok.</li>
+      <li>Egység- és integrációs tesztek a fő szolgáltatásokra.</li>
+      <li>Konfiguráció külön fájlokban (nyitvatartás, e-mail beállítások, stb.).</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>7. Összegzés</h2>
+    <p>A rendszerterv rögzíti az IdőMester időpontfoglaló rendszer technikai alapjait.
+       Az itt bemutatott architektúra és komponensek szorosan illeszkednek a H4
+       analízis modellhez, és stabil alapot adnak a prototípus implementálásához
+       és a későbbi bővítésekhez.</p>
+  </section>
+
+</div>
+</body>
+</html>
