@@ -1,3 +1,362 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>H1 – Projektterv | IdőMester – Fodrász Szalon</title>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    :root{
+      --bg: #faf7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #e11d48;
+      --primary-weak: #fde2e7;
+      --accent: #f59e0b;
+      --border: #e7e2ea;
+      --radius-xl: 18px;
+      --radius: 14px;
+      --shadow: 0 18px 45px rgba(17,24,39,.08);
+      --shadow-soft: 0 12px 22px rgba(17,24,39,.04);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg: #0b0f14;
+        --card: #0e131b;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --primary: #fb7185;
+        --primary-weak: #331621;
+        --accent: #fbbf24;
+        --border: #1f2937;
+        --shadow: 0 18px 45px rgba(0,0,0,.45);
+        --shadow-soft: 0 12px 22px rgba(0,0,0,.35);
+      }
+    }
+
+    body{
+      margin:0;
+      padding:2.8rem 1.2rem 3.6rem;
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.8), transparent 60%),
+                  radial-gradient(900px 700px at 120% 0%, color-mix(in srgb, var(--primary-weak) 45%, transparent), transparent 70%),
+                  var(--bg);
+      color: var(--text);
+      font: 16px/1.7 "Inter", sans-serif;
+    }
+
+    .container{max-width: 1024px; margin:0 auto;}
+
+    nav.back {margin-bottom: 25px;}
+    nav.back a {
+      display:inline-block;
+      padding:10px 16px;
+      background: var(--primary);
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:600;
+      box-shadow: var(--shadow-soft);
+      transition: 0.2s;
+    }
+    nav.back a:hover {filter:brightness(1.15); transform:translateX(-3px);}
+
+    header.hero{
+      display:flex;
+      gap:1.25rem;
+      align-items:center;
+      padding:1.6rem;
+      border:1px solid var(--border);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      margin-bottom:1.4rem;
+    }
+
+    .emblem{
+      width:72px; height:72px;
+      border-radius:22px;
+      background:
+        radial-gradient(30px 18px at 65% 25%, rgba(255,255,255,.45) 5%, transparent 60%),
+        conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
+      display:grid; place-items:center;
+      color:#fff; font-size:1.3rem; font-weight:800;
+      position:relative;
+    }
+    .emblem::after{content:"✂"; font-size:1.4rem;}
+
+    .badge{
+      display:inline-flex; align-items:center;
+      padding:.4rem .7rem;
+      border-radius:999px;
+      background: var(--primary-weak);
+      color: var(--primary);
+      font-weight:600;
+      border:1px solid color-mix(in srgb, var(--primary) 35%, transparent);
+    }
+
+    h1{font-size:2rem; margin:.3rem 0;}
+    .subtitle{color:var(--muted); margin-top:4px;}
+
+    .meta{
+      margin-top:1rem;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0.8rem;
+    }
+    .meta b{color:var(--muted); font-weight:600;}
+
+    section.card{
+      padding:1.4rem;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:var(--card);
+      margin:1.3rem 0;
+      box-shadow:var(--shadow-soft);
+    }
+
+    section.card h2{
+      font-size:1.3rem;
+      display:flex; align-items:center; gap:.5rem;
+      margin-bottom:1rem;
+    }
+    section.card h2::before{
+      content:""; width:10px; height:22px;
+      border-radius:6px;
+      background:linear-gradient(180deg, var(--primary), var(--accent));
+    }
+
+    p{margin:0.4rem 0 1rem;}
+    ul{padding-left:1.2rem; margin-bottom:1rem;}
+
+    table{
+      width:100%; border-collapse:collapse;
+      margin-bottom:1rem;
+      border:1px solid var(--border);
+      border-radius: 14px;
+      overflow:hidden;
+      background:var(--card);
+    }
+    thead th{
+      background: color-mix(in srgb, var(--primary-weak) 65%, var(--card));
+      padding:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:.04em;
+    }
+    th,td{
+      border-bottom:1px solid var(--border);
+      padding:0.8rem;
+    }
+    tbody tr:nth-child(odd){
+      background:color-mix(in srgb, var(--card) 96%, var(--bg));
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <nav class="back">
+      <a href="index.html">← Vissza az indexre</a>
+    </nav>
+
+    <header class="hero">
+      <div class="emblem"></div>
+      <div>
+        <span class="badge">H1 – Projektterv</span>
+        <h1>IdőMester — Fodrász Szalon Időpontfoglaló</h1>
+        <p class="subtitle">Egyszemélyes szoftverfejlesztési projekt (Python)</p>
+
+        <div class="meta">
+          <div><b>Csapat neve</b> SoloDev</div>
+          <div><b>Tantárgy</b> Szoftver Technológia</div>
+          <div><b>Dátum</b> 2025. október</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 0. Projektleírás -->
+    <section class="card" id="leiras">
+      <h2>0. Projektleírás</h2>
+      <p>Az IdőMester egy webes időpontfoglaló rendszer fodrászszalonok számára. 
+      A vendégek online választhatnak szolgáltatást (pl. hajvágás, festés, melír), 
+      stylistot és elérhető időpontot az üzlet nyitvatartása és a szakemberek beosztása alapján.
+      A rendszer ütközésmentes foglalást biztosít, alap visszaigazolást ad, 
+      és áttekinthető naptárnézetet kínál a szalon számára.</p>
+    </section>
+    <!-- 1. Követelmények -->
+    <section class="card" id="kovetelmenyek">
+      <h2>1. Követelmények</h2>
+
+      <p>A projekt főbb céljai és elvárásai a következők:</p>
+
+      <ul>
+        <li>Egyszerű, letisztult foglalási felület a vendégek számára.</li>
+        <li>Ütközésmentes foglalási logika (egy stylist csak egy vendéggel foglalkozhat adott időpontban).</li>
+        <li>Napi/heti naptárnézet a fodrászok és az adminisztrátor számára.</li>
+        <li>Alap szolgáltatáslista időtartammal és árral.</li>
+        <li>Foglalások módosítása vagy lemondása.</li>
+        <li>Adatok lokális tárolása (JSON/SQLite) a prototípus szintjén.</li>
+        <li>Felhasználóbarát felület mobilon és asztali nézetben egyaránt.</li>
+      </ul>
+
+      <p>A fenti követelmények az MVP-t (Minimum Viable Product) definiálják.  
+      A projekt későbbi fázisai opcionálisan tartalmazhatnak extra funkciókat, mint például e-mail értesítések vagy stylist elérhetőségeinek testreszabása.</p>
+    </section>
+
+
+    <!-- 2. Mérföldkövek -->
+    <section class="card" id="merfoldkovek">
+      <h2>2. Mérföldkövek</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Mérföldkő</th>
+            <th>Leszállítandó anyag</th>
+            <th>Határidő</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>H1</td>
+            <td>Projektterv + alap követelmények összegyűjtése</td>
+            <td>6. hét</td>
+          </tr>
+          <tr>
+            <td>H2</td>
+            <td>Vízió dokumentum, frissített projektterv, munkanapló</td>
+            <td>7. hét</td>
+          </tr>
+          <tr>
+            <td>H3</td>
+            <td>SRS, Szótár, Felhasználói dokumentáció első verzió</td>
+            <td>8. hét</td>
+          </tr>
+          <tr>
+            <td>H4</td>
+            <td>Analízis modell + rendszertervezés</td>
+            <td>11. hét</td>
+          </tr>
+          <tr>
+            <td>H5</td>
+            <td>Prototípus + tesztelési terv</td>
+            <td>14. hét</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>A mérföldkövek a tantárgyi ütemezéshez igazodnak, és folyamatosan kiegészülnek a projekt előrehaladása során.</p>
+    </section>
+    <!-- 3. Erőforrások -->
+    <section class="card" id="eroforrasok">
+      <h2>3. Erőforrások</h2>
+
+      <p>A projekt megvalósításához szükséges erőforrások:</p>
+
+      <ul>
+        <li><strong>Fejlesztői erőforrás:</strong> 1 fő (SoloDev – Kóró Marcell József).</li>
+        <li><strong>Eszközök:</strong> Visual Studio Code / PyCharm, GitHub, Git, Python 3.12.</li>
+        <li><strong>Könyvtárak és frameworkök:</strong> Flask vagy FastAPI, SQLite, pytest.</li>
+        <li><strong>Verziókezelés:</strong> GitHub repository, Git-flow alapú ágkezelés.</li>
+        <li><strong>Dokumentáció:</strong> Markdown és HTML alapú dokumentumok a GitHub Pages oldalon.</li>
+      </ul>
+
+      <p>A fejlesztés teljes egészében egyéni munka, így a kommunikációs és szervezési csatornák is egy fejlesztőhöz kötődnek.</p>
+    </section>
+
+
+    <!-- 4. Ütemezés -->
+    <section class="card" id="utemezes">
+      <h2>4. Ütemezés</h2>
+
+      <p>A tervezett ütemezés heti bontásban:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Hét</th>
+            <th>Feladatok</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1–2. hét</td>
+            <td>Követelmények összegyűjtése, domain elemzés, alap koncepció.</td>
+          </tr>
+          <tr>
+            <td>3–4. hét</td>
+            <td>Vízió dokumentum, szolgáltatáslista, folyamatábrák.</td>
+          </tr>
+          <tr>
+            <td>5–6. hét</td>
+            <td>Projektterv, első tervezési jegyzetek, MVP meghatározása.</td>
+          </tr>
+          <tr>
+            <td>7–8. hét</td>
+            <td>SRS dokumentum, szótár, felhasználói kézikönyv első verzió.</td>
+          </tr>
+          <tr>
+            <td>9–11. hét</td>
+            <td>Analízis modell, osztálydiagramok, rendszerterv.</td>
+          </tr>
+          <tr>
+            <td>12–14. hét</td>
+            <td>Prototípus implementálása, tesztelési terv.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>Az ütemezés rugalmas, de a mérföldkövekhez igazodik.</p>
+    </section>
+
+
+    <!-- 5. Kockázatok -->
+    <section class="card" id="kockazatok">
+      <h2>5. Kockázatok és kezelésük</h2>
+
+      <p>A projekt fejlesztése során a következő kockázatok merülhetnek fel:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Kockázat</th>
+            <th>Valószínűség</th>
+            <th>Hatás</th>
+            <th>Kezelés</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Időütközés-kezelés hibás működése</td>
+            <td>Közepes</td>
+            <td>Magas</td>
+            <td>Unit tesztek, integrációs tesztek, edge case-ek lefedése.</td>
+          </tr>
+          <tr>
+            <td>Naptárnézet áttekinthetősége</td>
+            <td>Alacsony</td>
+            <td>Közepes</td>
+            <td>Kisebb iterációkban történő UI tesztelés.</td>
+          </tr>
+          <tr>
+            <td>Adatvesztés</td>
+            <td>Alacsony</td>
+            <td>Magas</td>
+            <td>Rendszeres mentések, SQLite backup.</td>
+          </tr>
+          <tr>
+            <td>Időhiány</td>
+            <td>Közepes</td>
+            <td>Közepes</td>
+            <td>MVP-re fókuszálás, extra funkciók későbbre tolása.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>A kockázatok kezelése folyamatos monitorozást igényel.  
+      A legmagasabb prioritás a foglalási logika hibamentes működése.</p>
+    </section>
     <!-- 6. Tesztelés -->
     <section class="card" id="teszteles">
       <h2>6. Tesztelés</h2>
@@ -51,3 +410,4 @@
   </div>
 </body>
 </html>
+
