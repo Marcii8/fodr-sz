@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>H4 – Adatbázis-terv | IdőMester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root{
+      --bg: radial-gradient(circle at top, #050816 0, #02010a 45%, #000 100%);
+      --card: #0b1020;
+      --card-soft: #070a14;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #fb7185;
+      --accent: #38bdf8;
+      --border: #1f2937;
+      --shadow: 0 22px 45px rgba(0,0,0,.85);
+      --radius-xl: 20px;
+      --radius: 16px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      padding:2.4rem 1.2rem 3rem;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.7 "Inter",system-ui,sans-serif;
+    }
+
+    .container{max-width:1024px;margin:0 auto;}
+
+    /* TOP NAV */
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.6rem 1rem;
+      margin:-1.4rem -1.2rem 1.8rem;
+      background:rgba(3,7,18,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-title{font-weight:600;font-size:.95rem;color:var(--muted);}
+    .topbar-title span{color:var(--primary);}
+    .back-link{
+      display:inline-block;
+      padding:.45rem .9rem;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+
+    /* HERO */
+    .hero{
+      display:flex;gap:1.25rem;align-items:center;
+      padding:1.6rem;
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0 0,rgba(248,113,113,.18),transparent 60%),
+                 radial-gradient(circle at 100% 0,rgba(56,189,248,.18),transparent 60%),
+                 var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:1.4rem;
+    }
+    .emblem{
+      width:70px;height:70px;border-radius:22px;
+      background:conic-gradient(from 220deg,#fb7185,#a855f7,#38bdf8,#fb7185);
+      display:grid;place-items:center;
+      color:#fff;font-weight:800;font-size:1.3rem;
+    }
+    h1{margin:.1rem 0 .2rem;font-size:1.9rem;}
+    .subtitle{color:var(--muted);margin:0;}
+
+    /* CARDS */
+    section.card{
+      margin:1rem 0 1.3rem;
+      padding:1.3rem 1.4rem;
+      border-radius:var(--radius);
+      background:var(--card-soft);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    section.card h2{
+      margin:.1rem 0 .9rem;
+      font-size:1.25rem;
+      display:flex;align-items:center;gap:.55rem;
+    }
+    section.card h2::before{
+      content:"";width:10px;height:22px;border-radius:999px;
+      background:linear-gradient(180deg,var(--primary),var(--accent));
+    }
+
+    h3{margin:.6rem 0 .35rem;font-size:1.05rem;}
+    ul{margin:.2rem 0 .8rem;padding-left:1.1rem;}
+    li{margin-bottom:.2rem;}
+
+    table{
+      width:100%;border-collapse:collapse;margin:.4rem 0 1rem;
+      border-radius:12px;overflow:hidden;
+      border:1px solid var(--border);
+      font-size:.95rem;
+    }
+    th,td{padding:.6rem .8rem;border-bottom:1px solid #111827;}
+    thead th{
+      background:#020617;
+      text-transform:uppercase;
+      font-size:.78rem;
+    }
+    tbody tr:nth-child(odd){background:#020617;}
+    tbody tr:nth-child(even){background:#030712;}
+
+    img.diagram{
+      max-width:100%;
+      border-radius:14px;
+      display:block;
+      margin-top:1rem;
+      box-shadow:0 20px 40px rgba(0,0,0,.7);
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- TOP NAV -->
+  <nav class="topbar">
+    <div class="topbar-title"><span>H4</span> – Adatbázis-terv</div>
+    <a class="back-link" href="index.html">← Vissza az indexre</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="emblem">DB</div>
+    <div>
+      <h1>Adatbázis-terv – IdőMester</h1>
+      <p class="subtitle">ER-modell a Vendég – Foglalás – Szolgáltatás fogalmakra építve.</p>
+    </div>
+  </header>
+
+  <!-- 1. CÉL -->
+  <section class="card">
+    <h2>1. Cél</h2>
+    <p>Az adatbázis-terv a fodrász szalon időpontfoglaló rendszer (IdőMester)
+       fő fogalmait (VENDÉG, FOGLALÁS, SZOLGÁLTATÁS) írja le relációs modellben.
+       Az alábbi ER-modell a kapcsolatokat szemlélteti.</p>
+  </section>
+
+  <!-- 2. ER-MODELL KÉP -->
+  <section class="card">
+    <h2>2. ER-modell diagram</h2>
+    <p>Az alábbi ER-diagram a VENDÉG – FOGLALÁS – SZOLGÁLTATÁS közötti kapcsolatokat,
+       valamint a legfontosabb attribútumokat mutatja:</p>
+
+    <img src="h4_er_model.png"
+         alt="IdőMester ER-modell – Vendég, Foglalás, Szolgáltatás"
+         class="diagram">
+  </section>
+
+  <!-- 3. ENTITÁSOK -->
+  <section class="card">
+    <h2>3. Entitások és attribútumok</h2>
+
+    <h3>3.1 VENDÉG</h3>
+    <ul>
+      <li><strong>username</strong> – felhasználónév</li>
+      <li><strong>email</strong> – e-mail cím</li>
+      <li><strong>phone</strong> – telefonszám</li>
+      <li><strong>vendég_id</strong> – vendég azonosító (PK)</li>
+    </ul>
+
+    <h3>3.2 FOGLALÁS</h3>
+    <ul>
+      <li><strong>dátum</strong> – a foglalás napja</li>
+      <li><strong>időpont</strong> – a foglalás pontos ideje</li>
+      <li><strong>vendég_id</strong> – hivatkozás a VENDÉG entitásra</li>
+      <li><strong>stylist_id</strong> – hivatkozás a választott stylistre</li>
+    </ul>
+
+    <h3>3.3 SZOLGÁLTATÁS</h3>
+    <ul>
+      <li><strong>név</strong> – szolgáltatás neve (pl. hajvágás)</li>
+      <li><strong>leírás</strong> – rövid leírás</li>
+      <li><strong>specializáció</strong> – milyen típusú szolgáltatáshoz kapcsolódik</li>
+      <li><strong>stylist_id</strong> – melyik stylist végezheti</li>
+    </ul>
+  </section>
+
+  <!-- 4. KAPCSOLATOK -->
+  <section class="card">
+    <h2>4. Kapcsolatok</h2>
+    <ul>
+      <li><strong>VENDÉG – FOGLALÁS (Foglal):</strong> egy vendég több foglalást is létrehozhat.</li>
+      <li><strong>FOGLALÁS – SZOLGÁLTATÁS (Választ):</strong> egy foglalás pontosan egy szolgáltatáshoz tartozik.</li>
+      <li><strong>FOGLALÁS – STYLIST:</strong> a foglalásban rögzítjük, melyik stylist végzi a szolgáltatást.</li>
+    </ul>
+  </section>
+
+  <!-- 5. ÖSSZEGZÉS -->
+  <section class="card">
+    <h2>5. Összegzés</h2>
+    <p>A fenti ER-modell jól leképezi az IdőMester foglalási folyamatát:
+       a vendég foglal egy szolgáltatást egy adott időpontra, egy választott
+       stylisttal. Az adatbázis-terv a későbbi relációs táblák (pl. guests,
+       appointments, services) kialakításának alapját adja.</p>
+  </section>
+
+</div>
+</body>
+</html>
