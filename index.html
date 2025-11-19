@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IdőMester – Fodrász szalon időpontfoglaló (H1–H2)</title>
+  <title>IdőMester – Fodrász szalon időpontfoglaló (H1–H3)</title>
   <meta name="color-scheme" content="light dark">
-  <meta name="description" content="IdőMester – fodrász szalon időpontfoglaló rendszer: projektleírás és H1–H2 dokumentumok."/>
+  <meta name="description" content="IdőMester – fodrász szalon időpontfoglaló rendszer: projektleírás és H1–H3 dokumentumok."/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
   <style>
     /* ====== THEME ====== */
@@ -91,7 +91,7 @@
       padding:.38rem .65rem; border-radius:999px; background: var(--primary-weak); color: var(--primary);
       border:1px solid color-mix(in srgb, var(--primary) 30%, transparent);
     }
-    h1{font-size:1.6rem; line-height:1.25; margin:.2rem 0 .2rem}
+    h1{font-size:1.8rem; line-height:1.25; margin:.2rem 0 .2rem}
     .subtitle{color:var(--muted); margin:.2rem 0 0}
 
     /* ====== GRID / CARDS ====== */
@@ -104,9 +104,23 @@
     }
     .card h3{margin:.1rem 0 .6rem; display:flex; align-items:center; gap:.55rem; font-size:1.15rem}
     .muted{color:var(--muted)}
-    .pill{display:inline-flex; align-items:center; gap:.4rem; border:1px solid var(--border); background: color-mix(in srgb, var(--card) 92%, var(--bg)); padding:.28rem .55rem; border-radius:999px; font-size:.85rem}
-    .tile a.btn{display:inline-flex; align-items:center; gap:.45rem; width:max-content; padding:.48rem .75rem; border-radius:10px; border:1px solid var(--border); text-decoration:none; background:var(--card)}
+    .pill{
+      display:inline-flex; align-items:center; gap:.4rem;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 92%, var(--bg));
+      padding:.28rem .55rem; border-radius:999px; font-size:.85rem
+    }
+    .tile a.btn{
+      display:inline-flex; align-items:center; gap:.45rem;
+      width:max-content; padding:.48rem .75rem;
+      border-radius:10px; border:1px solid var(--border);
+      text-decoration:none; background:var(--card)
+    }
     .tile a.btn:hover{box-shadow: 0 8px 18px rgba(0,0,0,.08); transform: translateY(-1px)}
+    .link-list{margin-top:.4rem; font-size:.9rem}
+    .link-list a{text-decoration:underline; text-decoration-style:dotted; text-underline-offset:2px;}
+
+    footer{margin-top:2rem; text-align:center; color:var(--muted); font-size:.9rem;}
   </style>
 </head>
 <body>
@@ -119,6 +133,7 @@
         <ul>
           <li><a class="btn" href="#H1">Ugrás: H1</a></li>
           <li><a class="btn" href="#H2">Ugrás: H2</a></li>
+          <li><a class="btn" href="#H3">Ugrás: H3</a></li>
         </ul>
       </div>
     </nav>
@@ -161,11 +176,33 @@
         </article>
       </div>
 
+      <div class="col-6" id="H3">
+        <article class="card tile">
+          <div class="pill">H3 · Specifikációs fázis</div>
+          <h3>Áttekintés, SRS, Szótár, Felhasználói doksi</h3>
+          <p class="muted">
+            A rendszer részletes specifikációja: követelmények, use-case-ek, fogalomtár
+            és rövid felhasználói kézikönyv az IdőMester rendszerhez.
+          </p>
+          <div>
+            <a class="btn" href="H3-attekintes.html">Megnyitás – Áttekintés</a>
+          </div>
+          <div class="link-list">
+            További részek:
+            <br>
+            • <a href="H3-srs.html">SRS specifikáció</a><br>
+            • <a href="H3-szotar.html">Szótár</a><br>
+            • <a href="H3-felhasznaloi.html">Felhasználói dokumentáció</a>
+          </div>
+        </article>
+      </div>
+
     </section>
 
-    <footer style="margin-top:2rem; text-align:center; color:var(--muted); font-size:.9rem;">
+    <footer>
       Készült a Szoftvertechnológia tárgyhoz · IdőMester projekt · ✂
     </footer>
   </div>
 </body>
 </html>
+
