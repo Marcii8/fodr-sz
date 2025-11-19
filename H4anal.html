@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>H4 – Analízis modell | IdőMester</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --bg: radial-gradient(circle at top, #050816 0, #02010a 45%, #000 100%);
+      --card: #0b1020;
+      --card-soft: #070a14;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --primary: #fb7185;
+      --accent: #38bdf8;
+      --border: #1f2937;
+      --shadow: 0 22px 45px rgba(0,0,0,.85);
+      --radius-xl: 20px;
+      --radius: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      padding:2.4rem 1.2rem 3rem;
+      background:var(--bg);
+      color:var(--text);
+      font:16px/1.7 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    }
+    .container{max-width:1024px;margin:0 auto;}
+
+    /* top bar */
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:.6rem 1rem;
+      margin:-1.4rem -1.2rem 1.8rem;
+      background:rgba(3,7,18,.92);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-title{
+      font-weight:600;font-size:.95rem;color:var(--muted);
+    }
+    .topbar-title span{color:var(--primary);font-weight:700;}
+    .back-link{
+      display:inline-block;
+      padding:.45rem .9rem;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      text-decoration:none;
+      font-size:.9rem;
+      font-weight:600;
+    }
+    .back-link:hover{filter:brightness(1.1);}
+
+    /* hero */
+    .hero{
+      display:flex;gap:1.25rem;align-items:center;
+      padding:1.6rem 1.6rem;
+      border-radius:var(--radius-xl);
+      background:radial-gradient(circle at 0 0,rgba(248,113,113,.18),transparent 60%),
+                 radial-gradient(circle at 100% 0,rgba(56,189,248,.18),transparent 60%),
+                 var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      margin-bottom:1.4rem;
+    }
+    .emblem{
+      width:70px;height:70px;border-radius:22px;
+      background:conic-gradient(from 220deg,#fb7185,#a855f7,#38bdf8,#fb7185);
+      display:grid;place-items:center;
+      color:#fff;font-weight:800;font-size:1.3rem;
+    }
+    h1{margin:.1rem 0 .2rem;font-size:1.9rem;}
+    .subtitle{color:var(--muted);margin:0;}
+    .meta{margin-top:.9rem;font-size:.9rem;color:var(--muted);}
+    .meta b{color:#e5e7eb;font-weight:600;}
+
+    section.card{
+      margin:1rem 0 1.3rem;
+      padding:1.3rem 1.4rem;
+      border-radius:var(--radius);
+      background:var(--card-soft);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+    section.card h2{
+      margin:.1rem 0 .9rem;
+      font-size:1.25rem;
+      display:flex;align-items:center;gap:.55rem;
+    }
+    section.card h2::before{
+      content:"";width:10px;height:22px;border-radius:999px;
+      background:linear-gradient(180deg,var(--primary),var(--accent));
+    }
+    h3{margin:.6rem 0 .35rem;font-size:1.05rem;}
+    ul{margin:.2rem 0 .8rem;padding-left:1.1rem;}
+    li{margin-bottom:.2rem;}
+    table{
+      width:100%;border-collapse:collapse;margin:.5rem 0 1rem;
+      border-radius:12px;overflow:hidden;
+      border:1px solid var(--border);background:#020617;
+      font-size:.95rem;
+    }
+    th,td{padding:.65rem .8rem;border-bottom:1px solid #111827;vertical-align:top;}
+    thead th{background:#020617;color:#e5e7eb;text-transform:uppercase;font-size:.78rem;letter-spacing:.06em;}
+    tbody tr:nth-child(odd){background:#020617;}
+    tbody tr:nth-child(even){background:#030712;}
+    .note{
+      margin-top:.6rem;
+      padding:.8rem 1rem;
+      border-radius:12px;
+      background:rgba(15,23,42,.9);
+      border:1px dashed rgba(148,163,184,.9);
+      font-size:.92rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <nav class="topbar">
+    <div class="topbar-title"><span>H4</span> – Analízis modell</div>
+    <a class="back-link" href="index.html">← Vissza az indexre</a>
+  </nav>
+
+  <header class="hero">
+    <div class="emblem">H4</div>
+    <div>
+      <h1>Analízis modell – IdőMester</h1>
+      <p class="subtitle">Objektumorientált analízis modell a fodrász szalon időpontfoglaló rendszerhez.</p>
+      <p class="meta">
+        <b>Projekt:</b> IdőMester ·
+        <b>Tantárgy:</b> Szoftvertechnológia ·
+        <b>Készítette:</b> Kóró Marcell József
+      </p>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2>1. Cél és hatókör</h2>
+    <p>Az analízis modell célja, hogy a valós fodrász szalon működését objektumorientált
+       fogalmakkal írja le, technológiafüggetlen módon. A modell a fő fogalmakat
+       (vendég, stylist, szolgáltatás, időablak, foglalás) és azok kapcsolatait
+       rögzíti, hogy stabil alapot adjon a későbbi rendszertervnek és implementációnak.</p>
+  </section>
+
+  <section class="card">
+    <h2>2. Fő fogalmak és entitások</h2>
+
+    <h3>2.1 Szereplők</h3>
+    <ul>
+      <li><strong>Vendég:</strong> időpontot foglal, módosít vagy lemond.</li>
+      <li><strong>Stylist:</strong> szolgáltatást nyújt, beosztással rendelkezik.</li>
+      <li><strong>Admin:</strong> a szalon működtetéséért felelős; kezeli a szolgáltatás-listát, nyitvatartást.</li>
+    </ul>
+
+    <h3>2.2 Fő entitások</h3>
+    <table>
+      <thead>
+        <tr><th>Entitás</th><th>Leírás</th><th>Példa attribútumok</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Vendég</td>
+          <td>Foglalást létrehozó személy.</td>
+          <td>név, telefonszám, e-mail (opcionális)</td>
+        </tr>
+        <tr>
+          <td>Stylist</td>
+          <td>A szolgáltatást végző fodrász.</td>
+          <td>név, specializáció, elérhetőség</td>
+        </tr>
+        <tr>
+          <td>Szolgáltatás</td>
+          <td>Konkrét fodrász tevékenység.</td>
+          <td>megnevezés, időtartam, ár</td>
+        </tr>
+        <tr>
+          <td>Időablak</td>
+          <td>Foglalható idősáv egy adott napon.</td>
+          <td>kezdés, befejezés, stylist</td>
+        </tr>
+        <tr>
+          <td>Foglalás</td>
+          <td>Vendég által lefoglalt szolgáltatás.</td>
+          <td>vendég, stylist, szolgáltatás, időablak, státusz</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>Megjegyzés:</strong> ebben a fázisban az analízis modell nem foglalkozik technikai részletekkel
+      (adatbázis, API), csak a fogalmi szinttel.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Kapcsolatok és üzleti szabályok</h2>
+
+    <h3>3.1 Kapcsolatok</h3>
+    <ul>
+      <li><strong>Vendég – Foglalás:</strong> egy vendég több foglalással rendelkezhet.</li>
+      <li><strong>Stylist – Foglalás:</strong> egy stylistnek több foglalása lehet egy nap, de az időablakok nem fedhetik egymást.</li>
+      <li><strong>Szolgáltatás – Foglalás:</strong> egy foglaláshoz pontosan egy szolgáltatás tartozik.</li>
+      <li><strong>Stylist – Időablak:</strong> egy időablak egy adott stylisthez tartozik.</li>
+    </ul>
+
+    <h3>3.2 Fő üzleti szabályok</h3>
+    <ul>
+      <li>Foglalás csak nyitvatartási időn belül hozható létre.</li>
+      <li>Ugyanarra az időtartományra egy stylistnek csak egy aktív foglalása lehet.</li>
+      <li>A szolgáltatás időtartama bele kell, hogy férjen a választott időablakba.</li>
+      <li>Foglalás lemondása csak az időpont előtt egy konfigurálható határidőig lehetséges.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>4. Tipikus használati esetek (Use Case áttekintés)</h2>
+    <h3>4.1 Vendég időpontot foglal</h3>
+    <ul>
+      <li>Vendég kiválasztja a szolgáltatást.</li>
+      <li>Rendszer megjeleníti a választható stylistokat és szabad időablakokat.</li>
+      <li>Vendég kiválasztja az időpontot, megadja az elérhetőségeit.</li>
+      <li>Rendszer ütközést ellenőriz, majd létrehozza a foglalást.</li>
+    </ul>
+
+    <h3>4.2 Admin módosítja a szolgáltatás-listát</h3>
+    <ul>
+      <li>Admin új szolgáltatást vesz fel (időtartam + ár megadása).</li>
+      <li>Régi szolgáltatást inaktiválhat, ha már nem elérhető.</li>
+    </ul>
+
+    <h3>4.3 Stylist megtekinti a napi beosztását</h3>
+    <ul>
+      <li>Stylist bejelentkezik az admin felületre.</li>
+      <li>Napi nézetben látja a soron következő vendégeket és szolgáltatásokat.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>5. Összegzés</h2>
+    <p>Az analízis modell a fodrász szalon működésének technológiafüggetlen leírása.
+       A dokumentumban bemutatott entitások, kapcsolatok és szabályok változtatás nélkül
+       felhasználhatók a H4 rendszertervben és az adatbázis-tervben. A modell stabil
+       alapot biztosít az IdőMester rendszer további tervezési lépéseihez.</p>
+  </section>
+
+</div>
+</body>
+</html>
