@@ -50,50 +50,20 @@
     }
     .container{max-width: 1024px; margin:0 auto;}
 
-    /* ====== TOP NAV (egységes az indexszel) ====== */
-    nav.top{
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: saturate(160%) blur(8px);
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      border-bottom: 1px solid var(--border);
-      margin: -2.2rem -1.2rem 1.6rem;
-      padding: .6rem 1.2rem;
+    /* ====== BACK LINK ====== */
+    nav.back{
+      margin-bottom:1rem;
     }
-    .top .row{display:flex; align-items:center; gap:1rem; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800}
-    .logo{
-      width:40px; height:40px; border-radius:12px; isolation:isolate;
-      background: conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
-      display:grid; place-items:center; color:#fff; box-shadow: 0 12px 22px rgba(225,29,72,.28);
-      position:relative; font-size:1.1rem;
+    nav.back a{
+      display:inline-block; padding:.5rem .9rem; border-radius:999px;
+      text-decoration:none; color:#fff; background:var(--primary);
+      box-shadow: var(--shadow-soft);
+      font-size:.9rem; font-weight:600;
     }
-    .logo::after{content:"✂"; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
-    .top ul{list-style:none; display:flex; gap:.6rem; padding:0; margin:0; flex-wrap:wrap}
-    .top a.btn{
-      display:inline-block; padding:.42rem .7rem; border-radius:999px;
-      text-decoration:none; color:var(--text); border:1px solid var(--border);
-      background: var(--card); box-shadow: var(--shadow-soft);
-      font-size:.92rem;
+    nav.back a:hover{
+      filter:brightness(1.05);
+      transform: translateX(-2px);
     }
-    .top a.btn:hover{transform: translateY(-1px); box-shadow: 0 6px 14px rgba(0,0,0,.07)}
-
-    /* ====== TOP NAV / TOC ====== */
-    nav.toc{
-      position: sticky; top: 0; z-index: 5;
-      backdrop-filter: saturate(160%) blur(8px);
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      border-bottom: 1px solid var(--border);
-      margin: -2.2rem -1.2rem 1.6rem;
-      padding: .6rem 1.2rem;
-    }
-    .toc ul{list-style:none; display:flex; gap:.6rem; padding:0; margin:0; flex-wrap:wrap}
-    .toc a{
-      display:inline-block; padding:.42rem .7rem; border-radius:999px;
-      text-decoration:none; color:var(--text); border:1px solid var(--border);
-      background: var(--card); box-shadow: var(--shadow-soft);
-      font-size:.92rem;
-    }
-    .toc a:hover{transform: translateY(-1px); box-shadow: 0 6px 14px rgba(0,0,0,.07)}
 
     /* ====== HEADER ====== */
     header.hero{
@@ -180,7 +150,7 @@
     /* ====== PRINT ====== */
     @media print{
       body{background:#fff; padding:0}
-      nav.top, nav.toc{display:none}
+      nav.back{display:none}
       header.hero, section.card, footer.card{box-shadow:none; border-color:#cfcfd4}
       .badge{background:#ffe9ee; color:#9b0d2a}
       a[href]::after{content:" (" attr(href) ")"; font-size:10px; color:#666}
@@ -191,31 +161,9 @@
 <body>
   <div class="container">
 
-    <!-- Felső navigáció az index stílusában -->
-    <nav class="top" aria-label="Felső navigáció">
-      <div class="row">
-        <div class="brand"><span class="logo" aria-hidden="true"></span> Szoftvertech · IdőMester</div>
-        <ul>
-          <li><a class="btn" href="index.html">← Vissza az indexre</a></li>
-          <li><a class="btn" href="H1 fodrász.html">H1</a></li>
-          <li><a class="btn" href="H2 fodrász.html">H2</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Sticky table of contents -->
-    <nav class="toc" aria-label="Tartalomjegyzék">
-      <ul>
-        <li><a href="#leiras">Leírás</a></li>
-        <li><a href="#csapat">Csapat</a></li>
-        <li><a href="#merfoldkovek">Mérföldkövek</a></li>
-        <li><a href="#eszkozok">Eszközök</a></li>
-        <li><a href="#modszer">Módszerek</a></li>
-        <li><a href="#doksik">Dokumentumok</a></li>
-        <li><a href="#qa">Tesztelés</a></li>
-        <li><a href="#deliver">Leszállítás</a></li>
-        <li><a href="#sources">Források</a></li>
-      </ul>
+    <!-- Vissza az indexre -->
+    <nav class="back">
+      <a href="index.html">← Vissza az indexre</a>
     </nav>
 
     <!-- Header -->
@@ -359,3 +307,4 @@
   </div>
 </body>
 </html>
+
