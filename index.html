@@ -3,207 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IdőMester – Fodrász szalon időpontfoglaló (H1–H3)</title>
-  <meta name="color-scheme" content="light dark">
-  <meta name="description" content="IdőMester – fodrász szalon időpontfoglaló rendszer: projektleírás és H1–H3 dokumentumok."/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+  <title>IdőMester – Projekt dokumentumok</title>
+
   <style>
-    /* ====== THEME ====== */
-    :root{
-      --bg: #faf7fb;
-      --card: #ffffff;
-      --text: #0f172a;
-      --muted: #6b7280;
-      --primary: #e11d48;       /* rose-600 */
-      --primary-weak: #fde2e7;  /* rose-100 */
-      --accent: #f59e0b;        /* amber-500 */
-      --border: #e7e2ea;
-      --radius-xl: 18px;
-      --radius: 14px;
-      --shadow: 0 18px 45px rgba(17,24,39,.08);
-      --shadow-soft: 0 12px 22px rgba(17,24,39,.04);
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg: #0b0f14;
-        --card: #0e131b;
-        --text: #e5e7eb;
-        --muted: #9ca3af;
-        --primary: #fb7185;      /* rose-400 */
-        --primary-weak: #331621;
-        --accent: #fbbf24;
-        --border: #1f2937;
-        --shadow: 0 18px 45px rgba(0,0,0,.45);
-        --shadow-soft: 0 12px 22px rgba(0,0,0,.35);
-      }
+    body {
+      margin: 0;
+      padding: 30px;
+      font-family: Arial, sans-serif;
+      background: #faf7fb;
+      color: #111;
     }
 
-    /* ====== BASE ====== */
-    html,body{height:100%}
-    body{
-      margin:0; padding:2.8rem 1.2rem 3.6rem;
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.8), transparent 60%),
-                  radial-gradient(900px 700px at 120% 0%, color-mix(in srgb, var(--primary-weak) 45%, transparent), transparent 70%),
-                  var(--bg);
-      color: var(--text);
-      font: 16px/1.7 "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
     }
-    a{color:inherit}
-    .container{max-width: 1100px; margin:0 auto;}
 
-    /* ====== TOP NAV ====== */
-    nav.top{
-      position: sticky; top: 0; z-index: 10;
-      backdrop-filter: saturate(160%) blur(8px);
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      border-bottom: 1px solid var(--border);
-      margin: -2.2rem -1.2rem 1.6rem;
-      padding: .6rem 1.2rem;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .top .row{display:flex; align-items:center; gap:1rem; justify-content:space-between}
-    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800}
-    .logo{
-      width:40px; height:40px; border-radius:12px; isolation:isolate;
-      background: conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
-      display:grid; place-items:center; color:#fff; box-shadow: 0 12px 22px rgba(225,29,72,.28);
-      position:relative; font-size:1.1rem;
-    }
-    .logo::after{content:"✂"; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
-    .top ul{list-style:none; display:flex; gap:.6rem; padding:0; margin:0; flex-wrap:wrap}
-    .top a.btn{
-      display:inline-block; padding:.42rem .7rem; border-radius:999px;
-      text-decoration:none; color:var(--text); border:1px solid var(--border);
-      background: var(--card); box-shadow: var(--shadow-soft);
-      font-size:.92rem;
-    }
-    .top a.btn:hover{transform: translateY(-1px); box-shadow: 0 6px 14px rgba(0,0,0,.07)}
 
-    /* ====== HERO ====== */
-    header.hero{
-      position: relative; overflow:hidden;
-      display:grid; grid-template-columns: 1fr; gap:1rem; align-items:center;
-      padding:1.6rem; border:1px solid var(--border);
-      border-radius: var(--radius-xl); background: var(--card);
-      box-shadow: var(--shadow); margin-bottom:1.4rem;
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
-    .badge{
-      display:inline-flex; align-items:center; gap:.45rem; font-weight:700; letter-spacing:.02em;
-      padding:.38rem .65rem; border-radius:999px; background: var(--primary-weak); color: var(--primary);
-      border:1px solid color-mix(in srgb, var(--primary) 30%, transparent);
-    }
-    h1{font-size:1.8rem; line-height:1.25; margin:.2rem 0 .2rem}
-    .subtitle{color:var(--muted); margin:.2rem 0 0}
 
-    /* ====== GRID / CARDS ====== */
-    .grid{display:grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap:1rem}
-    .col-6{grid-column: span 6}
-    @media(max-width:720px){ .col-6{grid-column: span 12} }
-    .card{
-      padding:1.15rem; border:1px solid var(--border);
-      border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow-soft);
+    .card h3 {
+      margin-top: 0;
     }
-    .card h3{margin:.1rem 0 .6rem; display:flex; align-items:center; gap:.55rem; font-size:1.15rem}
-    .muted{color:var(--muted)}
-    .pill{
-      display:inline-flex; align-items:center; gap:.4rem;
-      border:1px solid var(--border);
-      background: color-mix(in srgb, var(--card) 92%, var(--bg));
-      padding:.28rem .55rem; border-radius:999px; font-size:.85rem
-    }
-    .tile a.btn{
-      display:inline-flex; align-items:center; gap:.45rem;
-      width:max-content; padding:.48rem .75rem;
-      border-radius:10px; border:1px solid var(--border);
-      text-decoration:none; background:var(--card)
-    }
-    .tile a.btn:hover{box-shadow: 0 8px 18px rgba(0,0,0,.08); transform: translateY(-1px)}
-    .link-list{margin-top:.4rem; font-size:.9rem}
-    .link-list a{text-decoration:underline; text-decoration-style:dotted; text-underline-offset:2px;}
 
-    footer{margin-top:2rem; text-align:center; color:var(--muted); font-size:.9rem;}
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 14px;
+      background: #e11d48;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .btn:hover {
+      background: #c2103b;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
 
-    <!-- Top bar -->
-    <nav class="top" aria-label="Felső navigáció">
-      <div class="row">
-        <div class="brand"><div class="logo" aria-hidden="true"></div> Szoftvertech · IdőMester</div>
-        <ul>
-          <li><a class="btn" href="#H1">Ugrás: H1</a></li>
-          <li><a class="btn" href="#H2">Ugrás: H2</a></li>
-          <li><a class="btn" href="#H3">Ugrás: H3</a></li>
-        </ul>
-      </div>
-    </nav>
+  <h1>IdőMester – Projekt dokumentumok</h1>
 
-    <!-- Hero with project description -->
-    <header class="hero" role="banner">
-      <span class="badge">Projektleírás</span>
-      <h1>IdőMester – fodrász szalon időpontfoglaló rendszer</h1>
-      <p class="subtitle">
-        Az IdőMester egy webalapú időpontfoglaló rendszer fodrászszalonok számára.
-        A vendégek egyszerűen választhatnak szolgáltatást, elérhető időpontot és stylistot,
-        míg az adminisztrátorok átlátható naptárfelületen kezelhetik a foglalásokat.
-        A projekt célja egy könnyen használható, ütközésmentes foglalási rendszer létrehozása
-        modern webes technológiákkal.
-      </p>
-    </header>
+  <div class="grid">
 
-    <!-- Leadandó kártyák -->
-    <section id="leadandok" class="grid" aria-label="Leadandók">
+    <!-- H1 -->
+    <div class="card">
+      <h3>H1 – Projektterv</h3>
+      <p>Projekt struktúra, mérföldkövek, csapat, eszközök.</p>
+      <a class="btn" href="H1 fodrász.html">Megnyitás</a>
+    </div>
 
-      <div class="col-6" id="H1">
-        <article class="card tile">
-          <div class="pill">H1 · Projektterv</div>
-          <h3>IdőMester – Projektterv</h3>
-          <p class="muted">Leírás, csapat/szerepek, mérföldkövek, eszközök, módszerek, dokumentumok.</p>
-          <div>
-            <a class="btn" href="H1 fodrász.html">Megnyitás</a>
-          </div>
-        </article>
-      </div>
+    <!-- H2 -->
+    <div class="card">
+      <h3>H2 – Követelmény-analízis</h3>
+      <p>Vízió, specifikáció, munkanapló és projekt részletek.</p>
+      <a class="btn" href="H2 fodrász.html">Megnyitás</a>
+    </div>
 
-      <div class="col-6" id="H2">
-        <article class="card tile">
-          <div class="pill">H2 · Követelmény-analízis</div>
-          <h3>Vízió + Projektterv + Munkanapló</h3>
-          <p class="muted">Stakeholderek, probléma, piac, NFR, kockázatok, szótár, H2 kivonat.</p>
-          <div>
-            <a class="btn" href="H2 fodrász.html">Megnyitás</a>
-          </div>
-        </article>
-      </div>
+    <!-- H3 (JAVÍTVA – MOST MÁR ITT VAN) -->
+    <div class="card">
+      <h3>H3 – Specifikációs fázis</h3>
+      <p>A teljes rendszer specifikáció 4 dokumentumra bontva.</p>
 
-      <div class="col-6" id="H3">
-        <article class="card tile">
-          <div class="pill">H3 · Specifikációs fázis</div>
-          <h3>Áttekintés, SRS, Szótár, Felhasználói doksi</h3>
-          <p class="muted">
-            A rendszer részletes specifikációja: követelmények, use-case-ek, fogalomtár
-            és rövid felhasználói kézikönyv az IdőMester rendszerhez.
-          </p>
-          <div>
-            <a class="btn" href="H3át.html">Megnyitás – Áttekintés</a>
-          </div>
-          <div class="link-list">
-            További részek:
-            <br>
-            • <a href="H3SRS.html">SRS specifikáció</a><br>
-            • <a href="H3szótár.html">Szótár</a><br>
-            • <a href="H3fel.html">Felhasználói dokumentáció</a>
-          </div>
-        </article>
-      </div>
+      <a class="btn" href="H3át.html">Áttekintés</a><br><br>
 
-    </section>
+      <a class="btn" href="H3SRS.html">SRS specifikáció</a><br><br>
 
-    <footer>
-      Készült a Szoftvertechnológia tárgyhoz · IdőMester projekt · ✂
-    </footer>
+      <a class="btn" href="H3szótár.html">Szótár</a><br><br>
+
+      <a class="btn" href="H3fel.html">Felhasználói dokumentáció</a>
+    </div>
+
   </div>
+
 </body>
 </html>
-
 
