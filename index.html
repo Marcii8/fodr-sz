@@ -3,164 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>IdőMester – Projekt dokumentumok</title>
-  <meta name="color-scheme" content="light dark">
+  <title>IdőMester – Projekt Dokumentumok</title>
+
   <style>
-    :root{
-      --bg: #faf7fb;
+    :root {
+      --bg: #f5f1f7;
       --card: #ffffff;
-      --text: #1f2937;
+      --text: #1e1e1e;
       --muted: #6b7280;
       --primary: #e11d48;
-      --primary-weak: #fde2e7;
-      --accent: #f59e0b;
-      --border: #e7e2ea;
-      --radius-xl: 18px;
-      --radius: 14px;
-      --shadow: 0 18px 45px rgba(17,24,39,.08);
-      --shadow-soft: 0 12px 22px rgba(17,24,39,.04);
+      --border: #ddd;
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --radius: 18px;
     }
 
-    body{
-      margin:0; padding:2.8rem 1.2rem 3.6rem;
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.8), transparent 60%),
-                  radial-gradient(900px 700px at 120% 0%, color-mix(in srgb, var(--primary-weak) 45%, transparent), transparent 70%),
-                  var(--bg);
-      color: var(--text); font:16px/1.7 "Inter", sans-serif;
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: var(--bg);
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--text);
     }
 
-    .container{max-width:1100px; margin:0 auto;}
-
-    /* TOP NAV */
-    nav.toc{
-      position:sticky; top:0; z-index:5;
-      backdrop-filter: saturate(160%) blur(8px);
-      background:color-mix(in srgb, var(--bg) 85%, transparent);
-      border-bottom:1px solid var(--border);
-      margin:-2.2rem -1.2rem 1.6rem;
-      padding:.6rem 1.2rem;
-    }
-    .toc ul{list-style:none; display:flex; gap:.6rem; padding:0; margin:0;}
-    .toc a{
-      padding:.45rem .75rem; border-radius:999px;
-      color:var(--text); text-decoration:none;
-      border:1px solid var(--border); background:var(--card);
-      box-shadow:var(--shadow-soft);
-      font-size:.92rem;
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 10px;
     }
 
-    /* HEADER */
-    header.hero{
-      display:flex; gap:1.2rem; align-items:center;
-      padding:1.6rem;
-      border-radius:var(--radius-xl);
-      border:1px solid var(--border);
-      background:var(--card);
-      box-shadow:var(--shadow);
-      margin-bottom:1.6rem;
-    }
-    .emblem{
-      width:80px; height:80px; border-radius:22px;
-      background:conic-gradient(from 220deg, var(--primary), #a21caf, var(--accent));
-      display:grid; place-items:center;
-      color:white; font-size:2rem; font-weight:700;
-      position:relative;
-      box-shadow:0 16px 26px rgba(225,29,72,.28);
-    }
-    .emblem::after{content:"✂"; position:absolute;}
-
-    .badge{
-      padding:.4rem .7rem; border-radius:999px;
-      display:inline-block; background:var(--primary-weak);
-      color:var(--primary); font-weight:700;
-      border:1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    p.subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 35px;
+      font-size: 1.05rem;
     }
 
-    /* CARDS */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(310px, 1fr));
-      gap:1.4rem;
-    }
-    .card{
-      padding:1.3rem;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow-soft);
-    }
-    .btn{
-      display:inline-block; margin-top:.8rem;
-      padding:.55rem 1rem; border-radius:10px;
-      background:var(--primary); color:white;
-      text-decoration:none;
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
     }
 
-    .btn:hover{background:#be123c;}
-
-    .link-list a{
-      color:var(--primary);
-      text-decoration:none;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
-    .link-list a:hover{text-decoration:underline;}
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin-top: 0;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn:hover {
+      background: #be123c;
+    }
   </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- NAV -->
-  <nav class="toc">
-    <ul>
-      <li><a href="#H1">Ugrás: H1</a></li>
-      <li><a href="#H2">Ugrás: H2</a></li>
-      <li><a href="#H3">Ugrás: H3</a></li>
-    </ul>
-  </nav>
+    <h1>IdőMester – Projekt Dokumentumok</h1>
+    <p class="subtitle">H1 – H2 – H3 dokumentumok rendezett formában</p>
 
-  <!-- HEADER -->
-  <header class="hero">
-    <div class="emblem"></div>
-    <div>
-      <span class="badge">Projektleírás</span>
-      <h1>IdőMester – Fodrász időpontfoglaló</h1>
-      <p class="subtitle">Projekt dokumentumok összegyűjtve (H1 – H3)</p>
+    <div class="grid">
+
+      <div class="card">
+        <h3>H1 – Projektterv</h3>
+        <p>Projekt felépítése, tervezés, mérföldkövek és csapatmunka.</p>
+        <a class="btn" href="H1 fodrász.html">Megnyitás</a>
+      </div>
+
+      <div class="card">
+        <h3>H2 – Követelmény-analízis</h3>
+        <p>Vízió, specifikáció, kockázatok és funkcionális igények.</p>
+        <a class="btn" href="H2 fodrász.html">Megnyitás</a>
+      </div>
+
+      <div class="card">
+        <h3>H3 – Áttekintés</h3>
+        <p>A specifikációs fázis összefoglaló nézete.</p>
+        <a class="btn" href="H3át.html">Megnyitás</a>
+      </div>
+
+      <div class="card">
+        <h3>H3 – SRS Dokumentum</h3>
+        <p>Rendszerkövetelmények részletes meghatározása.</p>
+        <a class="btn" href="H3SRS.html">Megnyitás</a>
+      </div>
+
+      <div class="card">
+        <h3>H3 – Szótár</h3>
+        <p>Fogalmak és definíciók gyűjteménye.</p>
+        <a class="btn" href="H3szótár.html">Megnyitás</a>
+      </div>
+
+      <div class="card">
+        <h3>H3 – Felhasználói dokumentáció</h3>
+        <p>Rendszer használati útmutató és kezelési útvonalak.</p>
+        <a class="btn" href="H3fel.html">Megnyitás</a>
+      </div>
+
     </div>
-  </header>
 
-  <!-- CARDS -->
-  <section class="grid">
-
-    <!-- H1 -->
-    <article class="card" id="H1">
-      <h3>H1 – Projektterv</h3>
-      <p>Projekttervezés, mérföldkövek, csapat és feladatok.</p>
-      <a class="btn" href="H1 fodrász.html">Megnyitás</a>
-    </article>
-
-    <!-- H2 -->
-    <article class="card" id="H2">
-      <h3>H2 – Követelmény-analízis</h3>
-      <p>Vízió, felhasználói körök, kockázatok, NFR és követelmények.</p>
-      <a class="btn" href="H2 fodrász.html">Megnyitás</a>
-    </article>
-
-    <!-- H3 -->
-    <article class="card" id="H3">
-      <h3>H3 – Specifikációs fázis</h3>
-      <p>A rendszer részletes specifikációja 4 külön dokumentumban.</p>
-
-      <a class="btn" href="H3át.html">Áttekintés</a><br><br>
-      <a class="btn" href="H3SRS.html">SRS specifikáció</a><br><br>
-      <a class="btn" href="H3szótár.html">Szótár</a><br><br>
-      <a class="btn" href="H3fel.html">Felhasználói dokumentáció</a>
-    </article>
-
-  </section>
-
-</div>
+  </div>
 
 </body>
 </html>
